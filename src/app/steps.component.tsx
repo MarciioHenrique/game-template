@@ -2,7 +2,7 @@
 import { Steps } from "antd";
 
 export default function TemplateSteps() {
-  const current = 1;
+  const current = 0;
   const { Step } = Steps;
 
   const steps = [
@@ -15,15 +15,16 @@ export default function TemplateSteps() {
   return (
     <Steps
       current={current}
-      className="flex justify-center p-4 w-8/12"
-      progressDot
+      size="small"
+      type="navigation"
+      className="flex justify-center p-4 w-9/12"
     >
       {steps.map((item, index) => (
         <Step
           key={item}
           title={item}
           className={`${
-            current === index + 1 ? "text-blue-700 font-bold" : "text-gray-400"
+            current === index ? "text-blue-700 font-bold" : "text-gray-400"
           }`}
         />
       ))}
