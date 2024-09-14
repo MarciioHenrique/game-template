@@ -17,7 +17,7 @@ export default function TemplateSteps() {
       current={current}
       size="small"
       type="navigation"
-      className="flex justify-center p-4 w-9/12"
+      className="flex flex-wrap justify-center p-4 sm:w-full md:w-6/12 lg:w-9/12 xl:w-9/12"
     >
       {steps.map((item, index) => (
         <Step
