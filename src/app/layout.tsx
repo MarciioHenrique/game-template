@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import { Layout, Typography } from "antd";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -28,7 +29,16 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <Layout className="w-screen h-screen">
+          <header className="bg-gradient-to-r from-[#002C6A] to-[#0C9FE0] flex items-center">
+            <Typography className="text-4xl font-bold text-white p-6">
+              TEMPLATE
+            </Typography>
+          </header>
+          <div className="w-full h-full bg-gradient-to-b from-[#E7E7E7] to-[#E7EAEC] flex items-center justify-center">
+            <div className="bg-white w-3/6 h-2/3 rounded-xl">{children}</div>
+          </div>
+        </Layout>
       </body>
     </html>
   );
