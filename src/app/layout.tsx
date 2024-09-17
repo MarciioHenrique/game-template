@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import { Layout, Typography } from "antd";
+import { Button, Layout, Typography } from "antd";
 import { routes } from "@/routes/routes";
 import Link from "next/link";
-import TemplateSteps from "./steps.component";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -42,7 +41,6 @@ export default function RootLayout({
           </header>
           <div className="w-full h-full bg-gradient-to-b from-[#E7E7E7] to-[#E7EAEC] flex items-center justify-center">
             <div className="bg-white w-3/6 h-2/3 rounded-xl flex flex-col items-center justify-center overflow-auto">
-              <TemplateSteps />
               {children}
             </div>
           </div>

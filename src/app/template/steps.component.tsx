@@ -1,8 +1,11 @@
 "use client";
 import { Steps } from "antd";
 
-export default function TemplateSteps() {
-  const current = 0;
+interface props {
+  current: number;
+}
+
+export default function TemplateSteps({ current }: props) {
   const { Step } = Steps;
 
   const steps = [
