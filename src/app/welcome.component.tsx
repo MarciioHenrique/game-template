@@ -11,7 +11,7 @@ export default function Welcome() {
         This is an game template develop to help on game production. You can
         start clicking on the button below.
       </Typography.Text>
-      <Button type="primary" href={routes.configurations} className="m-8">
+      <Button type="primary" href={routes.form} className="m-8">
         Start
       </Button>
     </Layout.Content>
