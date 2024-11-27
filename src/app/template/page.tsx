@@ -1,6 +1,6 @@
-import { GameTemplateForm } from "./form.page";
-import React from "react";
+"use client";
+import GameForm from "./form";
 
-export default async function Template() {
-  return "teste";
+export default function Page() {
+  return <GameForm />;
 }
