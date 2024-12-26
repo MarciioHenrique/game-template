@@ -13,12 +13,13 @@ export default function ComponentsForm() {
   };
 
   return (
-    <Layout.Content className="w-full h-full p-8">
+    <Layout.Content className="w-full h-full p-8 flex flex-col">
       <Form
         form={form}
         layout="vertical"
         initialValues={components ?? {}}
         onFinish={onFinish}
+        className="flex flex-col flex-grow"
       >
         <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 24 }}>
           <Col xs={24} sm={24} md={12} lg={12}>
@@ -136,7 +137,10 @@ export default function ComponentsForm() {
             </Form.Item>
           </Col>
         </Row>
-        <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 24 }}>
+        <Row
+          gutter={{ xs: 8, sm: 16, md: 24, lg: 24 }}
+          className="w-full flex justify-between items-center mt-auto"
+        >
           <Button type="default" onClick={onHandleBack}>
             Voltar
           </Button>

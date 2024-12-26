@@ -2,18 +2,27 @@
 import { Row, Layout, Form, Select, Button } from "antd";
 import { useFormState } from "../form.context";
 import { Scope } from "@/models/game-request";
+import { use, useEffect, useState } from "react";
 
 const { Option } = Select;
 
 export default function ScopeForm() {
-  const { onHandleNext, onHandleBack, scope, submitGameRequest } =
+  const { onHandleNext, onHandleBack, scope, step, submitGameRequest } =
     useFormState();
   const [form] = Form.useForm();
+  const [submitting, setSubmitting] = useState(false);
 
   const onFinish = (values: Scope) => {
     onHandleNext({ scope: values });
-    submitGameRequest();
+    setSubmitting(true);
   };
+
+  useEffect(() => {
+    if (submitting && step === 3) {
+      setSubmitting(false);
+      submitGameRequest();
+    }
+  }, [submitting]);
 
   const vowels = ["A", "E", "I", "O", "U"];
   const stages = {
@@ -24,17 +33,18 @@ export default function ScopeForm() {
   };
 
   return (
-    <Layout.Content className="w-full h-full p-8">
+    <Layout.Content className="w-full h-full p-8 flex flex-col">
       <Form
         form={form}
         layout="vertical"
         initialValues={scope ?? {}}
         onFinish={onFinish}
+        className="flex flex-col flex-grow"
       >
         <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 24 }}>
           <Form.Item
             label="Vogais"
-            name={["scope", "vowels"]}
+            name="vowels"
             rules={[
               { required: true, message: "Selecione pelo menos uma vogal." },
             ]}
@@ -51,7 +61,7 @@ export default function ScopeForm() {
         <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 24 }}>
           <Form.Item
             label="Estágios"
-            name={"stages"}
+            name="stages"
             rules={[{ required: true, message: "Selecione os estágios." }]}
           >
             <Select mode="multiple" placeholder="Selecione os estágios">
@@ -63,7 +73,10 @@ export default function ScopeForm() {
             </Select>
           </Form.Item>
         </Row>
-        <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 24 }}>
+        <Row
+          gutter={{ xs: 8, sm: 16, md: 24, lg: 24 }}
+          className="w-full flex justify-between items-center mt-auto"
+        >
           <Button type="default" onClick={onHandleBack}>
             Voltar
           </Button>

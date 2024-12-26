@@ -1,4 +1,4 @@
 export const routes = {
   welcome: "/",
-  form: "/template",
+  form: "/form",
 };
