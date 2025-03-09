@@ -17,7 +17,7 @@ export default function FormPage() {
 
   return (
     <Layout className="w-full h-full bg-white">
-      <Layout.Header className="bg-white">
+      <Layout.Header className="bg-white font-bold">
         <Steps type="navigation" current={step - 1}>
           {steps.map((step, index) => (
             <Step key={index} title={step.title} />
@@ -27,16 +27,6 @@ export default function FormPage() {
       <Layout.Content>
         <FormSteps />
       </Layout.Content>
-      {/* <Layout.Footer className="bg-white flex justify-between items-center">
-        <Button onClick={onHandleBack} disabled={step === 1}>
-          Voltar
-        </Button>
-        {step === 3 ? (
-          <Button onClick={submitGameRequest}>Gerar Jogo</Button>
-        ) : (
-          <Button onClick={() => onHandleNext({})}>Próximo</Button>
-        )}
-      </Layout.Footer> */}
     </Layout>
   );
 }
